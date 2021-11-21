@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
 import javax.jms.Topic;
+import org.hornetq.api.jms.HornetQJMSClient;
 import org.hornetq.jms.client.HornetQTopic;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
@@ -33,12 +34,14 @@ public class AppContext {
 
     @Bean 
     public Queue harp07qq() {
-	return new HornetQQueue("harp07qq");
+	return HornetQJMSClient.createQueue("harp07qq");
+                //new HornetQQueue("harp07qq");
     }
     
     @Bean 
     public Topic harp07tt() {
-	return new HornetQTopic("harp07tt");
+	return HornetQJMSClient.createTopic("harp07tt");
+                //new HornetQTopic("harp07tt");
     }    
     
     /* without auth - for default user:passw = guest:guest
@@ -83,8 +86,8 @@ public class AppContext {
     public JmsTemplate jmsTemplate() {
 	JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
         // Default Destination
-	jmsTemplate.setPubSubDomain(true);
-        jmsTemplate.setDefaultDestination(harp07qq());
+	//jmsTemplate.setPubSubDomain(true);
+        //jmsTemplate.setDefaultDestination(harp07qq());
 	return jmsTemplate;
     }   
     
