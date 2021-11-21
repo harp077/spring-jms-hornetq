@@ -39,12 +39,12 @@ public class AppContext {
                 //new HornetQQueue("harp07qq");
     }
     
-    @Bean 
+    /*@Bean 
     public Topic topic() {
 	return new HornetQTopic("harp07tt");
                 //HornetQJMSClient.createTopic("harp07tt");
                 //new HornetQTopic("harp07tt");
-    }    
+    }  */  
     
     /* without auth - for default user:passw = guest:guest
     @Bean 
@@ -81,6 +81,7 @@ public class AppContext {
 	DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 	factory.setConnectionFactory(connectionFactory());
 	factory.setConcurrency("3-5");
+        //factory.setPubSubDomain(true);
 	return factory;
     }
 

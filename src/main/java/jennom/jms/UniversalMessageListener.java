@@ -42,7 +42,7 @@ public class UniversalMessageListener {
         }
     }
     
-    @JmsListener(destination = "harp07tt")
+    //@JmsListener(destination = "harp07tt")
     public void receiveTopic(String message) {
         System.out.println("Отслеживать тему ============= Отслеживать тему");
         System.out.println(message);
