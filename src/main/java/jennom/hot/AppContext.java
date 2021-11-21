@@ -33,14 +33,16 @@ public class AppContext {
     /// ========================= JMS ============================
 
     @Bean 
-    public Queue harp07qq() {
-	return HornetQJMSClient.createQueue("harp07qq");
+    public Queue queue() {
+	return new HornetQQueue("harp07qq");
+                //HornetQJMSClient.createQueue("harp07qq");
                 //new HornetQQueue("harp07qq");
     }
     
     @Bean 
-    public Topic harp07tt() {
-	return HornetQJMSClient.createTopic("harp07tt");
+    public Topic topic() {
+	return new HornetQTopic("harp07tt");
+                //HornetQJMSClient.createTopic("harp07tt");
                 //new HornetQTopic("harp07tt");
     }    
     
@@ -87,7 +89,7 @@ public class AppContext {
 	JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
         // Default Destination
 	//jmsTemplate.setPubSubDomain(true);
-        //jmsTemplate.setDefaultDestination(harp07qq());
+        //jmsTemplate.setDefaultDestination(queue());
 	return jmsTemplate;
     }   
     
