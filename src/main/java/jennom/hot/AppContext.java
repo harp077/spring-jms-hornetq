@@ -39,12 +39,12 @@ public class AppContext {
                 //new HornetQQueue("harp07qq");
     }
     
-    /*@Bean 
+    @Bean 
     public Topic topic() {
 	return new HornetQTopic("harp07tt");
                 //HornetQJMSClient.createTopic("harp07tt");
                 //new HornetQTopic("harp07tt");
-    }  */  
+    }  
     
     /* without auth - for default user:passw = guest:guest
     @Bean 
