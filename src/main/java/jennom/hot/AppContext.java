@@ -83,7 +83,8 @@ public class AppContext {
     public JmsTemplate jmsTemplate() {
 	JmsTemplate jmsTemplate = new JmsTemplate(connectionFactory());
         // Default Destination
-	//jmsTemplate.setDefaultDestination(harp07());
+	jmsTemplate.setPubSubDomain(true);
+        jmsTemplate.setDefaultDestination(harp07qq());
 	return jmsTemplate;
     }   
     
