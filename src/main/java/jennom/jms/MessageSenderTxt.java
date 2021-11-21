@@ -13,19 +13,35 @@ import org.springframework.stereotype.Component;
 public class MessageSenderTxt { //implements MessageSender {
     
     @Inject
-    private JmsTemplate jmsTemplate;
+    private JmsTemplate jmsQueueTemplate;
+    @Inject
+    private JmsTemplate jmsTopicTemplate;    
 
     //@Override
-    public void sendMessage(String destinationNameQ, String message) {
-        jmsTemplate.setDeliveryDelay(500L);
-        this.jmsTemplate.send(destinationNameQ, new MessageCreator() {
+    public void sendMessageQ(String destinationNameQ, String message) {
+        jmsQueueTemplate.setDeliveryDelay(500L);
+        this.jmsQueueTemplate.send(destinationNameQ, new MessageCreator() {
             @Override
             public Message createMessage(Session session)
                     throws JMSException {
                 TextMessage jmsMessage = session.createTextMessage(message);
-                System.out.println(">>> Sending txt user: " + jmsMessage.getText());
+                System.out.println(">>> sendMessageQ -> Sending txt user: " + jmsMessage.getText());
                 return jmsMessage;
             }
         });
     }
+    
+    public void sendMessageT(String destinationNameQ, String message) {
+        jmsTopicTemplate.setDeliveryDelay(500L);
+        this.jmsTopicTemplate.send(destinationNameQ, new MessageCreator() {
+            @Override
+            public Message createMessage(Session session)
+                    throws JMSException {
+                TextMessage jmsMessage = session.createTextMessage(message);
+                System.out.println(">>> sendMessageT -> Sending txt user: " + jmsMessage.getText());
+                return jmsMessage;
+            }
+        });
+    }    
+    
 }

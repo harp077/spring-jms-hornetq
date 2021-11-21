@@ -11,12 +11,12 @@ public class MessageSenderObj { //implements MessageSender {
     @Inject
     private Gson gson;
     @Inject
-    private JmsTemplate jmsTemplate;
+    private JmsTemplate jmsQueueTemplate;
 
     //@Override
     public void sendMessage(String destinationNameQ, User user) {
-        jmsTemplate.setDeliveryDelay(555L);
-        this.jmsTemplate.convertAndSend(destinationNameQ, user);
+        jmsQueueTemplate.setDeliveryDelay(555L);
+        this.jmsQueueTemplate.convertAndSend(destinationNameQ, user);
         //loggerBean.info(" >>> Sending obj user = " + gson.toJson(user));
         System.out.println(" >>> Sending obj user GSON = " + gson.toJson(user));
     }
