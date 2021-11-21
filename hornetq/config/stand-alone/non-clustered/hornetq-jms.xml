@@ -51,8 +51,12 @@
    </queue>
 
    <!--  MY --> 
-   <queue name="harp07">
-      <entry name="/queue/harp07"/>
+   <queue name="harp07qq">
+      <entry name="/queue/harp07qq"/>
    </queue>
+
+   <topic name="harp07tt">
+      <entry name="/topic/harp07tt"/>
+   </topic>
 
 </configuration>

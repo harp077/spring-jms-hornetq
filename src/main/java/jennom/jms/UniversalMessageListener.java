@@ -16,7 +16,7 @@ public class UniversalMessageListener {
     private Gson gson;  
 
     // ONLY 1-listener for 1-queue !!!
-    @JmsListener(destination = "harp07", containerFactory = "jmsListenerContainerFactory")
+    @JmsListener(destination = "harp07qq", containerFactory = "jmsListenerContainerFactory")
     public void onMessage(Object message) {
         //if (message.getClass().getName().equals("jennom.jms.User")) {
         //if (message instanceof User) { 
@@ -41,5 +41,11 @@ public class UniversalMessageListener {
             }                 
         }
     }
+    
+    @JmsListener(destination = "harp07tt")
+    public void receiveTopic(String message) {
+        System.out.println("Отслеживать тему ============= Отслеживать тему");
+        System.out.println(message);
+    }        
 
 }

@@ -14,6 +14,9 @@ import org.springframework.jms.annotation.EnableJms;
 import java.util.HashMap;
 import java.util.Map;
 import javax.jms.ConnectionFactory;
+import javax.jms.Queue;
+import javax.jms.Topic;
+import org.hornetq.jms.client.HornetQTopic;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
@@ -29,9 +32,14 @@ public class AppContext {
     /// ========================= JMS ============================
 
     @Bean 
-    public HornetQQueue harp07() {
-	return new HornetQQueue("harp07");
+    public Queue harp07qq() {
+	return new HornetQQueue("harp07qq");
     }
+    
+    @Bean 
+    public Topic harp07tt() {
+	return new HornetQTopic("harp07tt");
+    }    
     
     /* without auth - for default user:passw = guest:guest
     @Bean 
