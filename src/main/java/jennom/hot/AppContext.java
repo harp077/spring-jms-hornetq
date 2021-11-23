@@ -18,6 +18,7 @@ import javax.jms.Queue;
 import javax.jms.Topic;
 import jennom.jms.JmsExceptionListener;
 import org.hornetq.api.jms.HornetQJMSClient;
+import org.hornetq.api.jms.JMSFactoryType;
 import org.hornetq.jms.client.HornetQTopic;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
@@ -66,7 +67,8 @@ public class AppContext {
 	TransportConfiguration transportConfiguration = 
             new TransportConfiguration(NettyConnectorFactory.class.getName(), connDetails);
         // HornetQJMSConnectionFactory(boolean ha, TransportConfiguration[] initialConnectors)
-        ConnectionFactory hornetCF = new HornetQJMSConnectionFactory(false, transportConfiguration);
+        //ConnectionFactory hornetCF = new HornetQJMSConnectionFactory(false, transportConfiguration);
+        ConnectionFactory hornetCF = HornetQJMSClient.createConnectionFactoryWithoutHA(JMSFactoryType.QUEUE_CF, transportConfiguration);
         UserCredentialsConnectionFactoryAdapter userCF = new UserCredentialsConnectionFactoryAdapter();
         userCF.setTargetConnectionFactory(hornetCF);
         userCF.setUsername("romka");
